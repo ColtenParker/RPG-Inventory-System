@@ -18,6 +18,8 @@ int main()
 	
 	mage.DisplayInventory();
 	mage.AddItemToInventory(std::move(wand));
+	mage.AddItemToInventory(std::move(sword));
+	mage.AddItemToInventory(std::move(axe));
 	mage.DisplayInventory();
 
 	mage2.DisplayStats();
