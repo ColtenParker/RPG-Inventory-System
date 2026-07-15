@@ -2,7 +2,7 @@
 #include <iostream>
 #include <memory>
 
-Inventory::Inventory(std::size_t maxSize, std::size_t itemCount) : maxSize(maxSize), itemCount(itemCount)
+Inventory::Inventory(std::size_t maxSize) : maxSize(maxSize)
 {
 }
 
@@ -11,20 +11,15 @@ std::size_t Inventory::getMaxSize() const
 	return maxSize;
 }
 
-std::size_t Inventory::getItemCount() const
+std::unique_ptr<Item> Inventory::addItem(std::unique_ptr<Item> item)
 {
-	return itemCount;
-}
-
-void Inventory::addItem(std::unique_ptr<Item> item)
-{
-	if (itemCount >= maxSize)
+	if (items.size() >= maxSize)
 	{
 		std::cout << "Inventory is full. Cannot add item: " << item->getName() << std::endl;
-		return;
+		return item;
 	}
 	items.push_back(std::move(item));
-	itemCount++;
+	return nullptr;
 }
 
 void Inventory::displayInventory() const

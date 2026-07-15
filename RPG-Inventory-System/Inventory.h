@@ -7,15 +7,13 @@ class Inventory
 {
 	std::vector<std::unique_ptr<Item>> items;
 	std::size_t maxSize;
-	std::size_t itemCount;
 
 public:
-	Inventory(std::size_t maxSize = 10, std::size_t itemCount = 0);
+	Inventory(std::size_t maxSize = 2); //temporary default maxSize set to 2 for testing purposes
 
 	std::size_t getMaxSize() const;
-	std::size_t getItemCount() const;
 
-	void addItem(std::unique_ptr<Item> item);
+	std::unique_ptr<Item> addItem(std::unique_ptr<Item> item);
 	void displayInventory() const;
 };
 
