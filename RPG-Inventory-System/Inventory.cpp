@@ -13,7 +13,11 @@ std::size_t Inventory::getMaxSize() const
 
 std::unique_ptr<Item> Inventory::addItem(std::unique_ptr<Item> item)
 {
-	if (items.size() >= maxSize)
+	if (!item)
+	{
+		std::cout << "Cannot add a null item to the inventory." << std::endl;
+		return nullptr;
+	}	else if (items.size() >= maxSize)
 	{
 		std::cout << "Inventory is full. Cannot add item: " << item->getName() << std::endl;
 		return item;
