@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="RPG-Inventory-System/RPG-Inventory-System.vcxproj" Id="1917f1dc-42f5-43b0-a19b-21ab112c0610" />
+</Solution>
