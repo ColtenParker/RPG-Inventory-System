@@ -7,9 +7,9 @@
 
 int main()
 {
-	auto sword = std::make_unique<Weapon>("Sword", "A sharp blade", 100, 5, 20, "Longsword");
-	auto axe = std::make_unique<Weapon>("Axe", "A heavy axe", 150, 10, 30, "Battleaxe");
-	auto wand = std::make_unique<Weapon>("Wand", "A magical wand", 200, 2, 15, "Magic Wand");
+	std::unique_ptr<Item> sword = std::make_unique<Weapon>("Sword", "A sharp blade", 100, 5, 20, "Longsword");
+	std::unique_ptr<Item> axe = std::make_unique<Weapon>("Axe", "A heavy axe", 150, 10, 30, "Battleaxe");
+	std::unique_ptr<Item> wand = std::make_unique<Weapon>("Wand", "A magical wand", 200, 2, 15, "Magic Wand");
 
 	Mage mage("Gandalf");
 	Mage mage2("Merlin");
@@ -17,9 +17,9 @@ int main()
 	mage.DisplayStats();
 	
 	mage.DisplayInventory();
-	mage.AddItemToInventory(std::move(wand));
-	mage.AddItemToInventory(std::move(sword));
-	mage.AddItemToInventory(std::move(axe));
+	wand = mage.AddItemToInventory(std::move(wand));
+	sword = mage.AddItemToInventory(std::move(sword));
+	axe = mage.AddItemToInventory(std::move(axe));
 	mage.DisplayInventory();
 
 	mage2.DisplayStats();

@@ -66,9 +66,9 @@ bool Character::IsAlive() const
 	return currentHealth > 0;
 }
 
-void Character::AddItemToInventory(std::unique_ptr<Item> item)
+std::unique_ptr<Item> Character::AddItemToInventory(std::unique_ptr<Item> item)
 {
-	inventory.addItem(std::move(item));
+	return inventory.addItem(std::move(item));
 }
 
 void Character::DisplayInventory() const
