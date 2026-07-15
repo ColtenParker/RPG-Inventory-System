@@ -1,20 +1,21 @@
 #pragma once
 #include <string>
+#include "ItemType.h"
 
 class Item
 {
 protected:
 	std::string name;
 	std::string description;
-	std::string type;
+	ItemType type;
 	int value;
 	int weight;
 
 public:
-	Item(const std::string& name, const std::string& description, const std::string& type, int value, int weight);
+	Item(const std::string& name, const std::string& description, ItemType type, int value, int weight);
 
 	std::string getName() const;
-	std::string getType() const;
+	ItemType getType() const;
 	int getValue() const;
 	int getWeight() const;
 
