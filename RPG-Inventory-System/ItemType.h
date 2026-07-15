@@ -3,7 +3,6 @@ enum class ItemType
 {
 	Weapon,
 	Armor,
-	Potion,
-	Gold
+	Potion
 };
 
