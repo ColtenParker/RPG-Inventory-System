@@ -75,3 +75,8 @@ void Character::DisplayInventory() const
 {
 	inventory.displayInventory();
 }
+
+const Item* Character::findItemByName(const std::string& name) const
+{
+	return inventory.findItemByName(name);
+}

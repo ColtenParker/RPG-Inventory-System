@@ -22,8 +22,13 @@ int main()
 	axe = mage.AddItemToInventory(std::move(axe));
 	mage.DisplayInventory();
 
-	mage2.DisplayStats();
 	mage2.DisplayInventory();
+
+	const Item* foundItem = mage.findItemByName("Sword");
+	if (foundItem)
+	{
+		foundItem->displayInfo();
+	}
 
 	return 0;
 }

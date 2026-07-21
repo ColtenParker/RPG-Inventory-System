@@ -15,5 +15,7 @@ public:
 
 	std::unique_ptr<Item> addItem(std::unique_ptr<Item> item);
 	void displayInventory() const;
+
+	const Item* findItemByName(const std::string& name) const;
 };
 

@@ -21,8 +21,10 @@ public:
 	void TakeDamage(int damage);
 	void Heal(int amount);
 	bool IsAlive() const;
+
 	std::unique_ptr<Item> AddItemToInventory(std::unique_ptr<Item> item);
 	void DisplayInventory() const;
+	const Item* findItemByName(const std::string& name) const;
 
 	virtual ~Character() = default;
 };

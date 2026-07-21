@@ -41,3 +41,15 @@ void Inventory::displayInventory() const
 		std::cout << std::endl;
 	}
 }
+
+const Item* Inventory::findItemByName(const std::string& name) const
+{
+	auto it = std::find_if(items.begin(), items.end(), [&name](const std::unique_ptr<Item>& item) {
+		return item->getName() == name;
+	});
+	if (it != items.end())
+	{
+		return it->get();
+	}
+	return nullptr;
+}
