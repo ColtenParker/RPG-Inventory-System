@@ -71,6 +71,11 @@ std::unique_ptr<Item> Character::AddItemToInventory(std::unique_ptr<Item> item)
 	return inventory.addItem(std::move(item));
 }
 
+std::unique_ptr<Item> Character::RemoveItemFromInventory(std::size_t index)
+{
+	return inventory.removeItem(index);
+}
+
 void Character::DisplayInventory() const
 {
 	inventory.displayInventory();

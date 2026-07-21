@@ -14,6 +14,8 @@ public:
 	std::size_t getMaxSize() const;
 
 	std::unique_ptr<Item> addItem(std::unique_ptr<Item> item);
+	std::unique_ptr<Item> removeItem(std::size_t index);
+
 	void displayInventory() const;
 
 	const Item* findItemByName(const std::string& name) const;
