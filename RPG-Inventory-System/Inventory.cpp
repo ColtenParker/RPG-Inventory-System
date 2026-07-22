@@ -27,21 +27,17 @@ std::unique_ptr<Item> Inventory::addItem(std::unique_ptr<Item> item)
 	return nullptr;
 }
 
-std::unique_ptr<Item> Inventory::removeItem(std::unique_ptr<Item> item)
+std::unique_ptr<Item> Inventory::removeItem(std::size_t index)
 {
-	auto it = std::find_if(items.begin(), items.end(), [&item](const std::unique_ptr<Item>& i) {
-		return i.get() == item.get();
-	});
-	if (it != items.end())
+	if (index >= items.size())
 	{
-		std::unique_ptr<Item> removedItem = std::move(*it);
-		items.erase(it);
-		return removedItem;
+		std::cout << "Invalid item index." << std::endl;
+		return nullptr;
 	}
-	std::cout << "Item not found in inventory." << std::endl;
-	return nullptr;
+	std::unique_ptr<Item> item = std::move(items[index]);
+	items.erase(items.begin() + index);
+	return item;
 }
-
 
 void Inventory::displayInventory() const
 {

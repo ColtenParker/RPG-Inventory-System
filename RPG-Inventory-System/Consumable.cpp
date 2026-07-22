@@ -27,10 +27,9 @@ std::string Consumable::getConsumableType() const
 
 bool Consumable::Use(Character& character)
 {
-	if (character.Heal(healthRestoreAmount))
+	if (!character.Heal(healthRestoreAmount))
 	{
-		character.RemoveItemFromInventory(std::make_unique<Consumable>(*this));
-		return true;
+		return false;
 	}
 	return true;
 }
