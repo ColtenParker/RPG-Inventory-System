@@ -22,24 +22,27 @@ int main()
 	//Create Consumable items
 	std::unique_ptr<Item> healthPotion = std::make_unique<Consumable>("Health Potion", "Restores health", 25, 1, 50, "Health");
 
-	// Create 2 mage characters
+	// Create mage character
 	Mage mage("Gandalf");
-	Mage mage2("Merlin");
 
 	// Display stats and inventory
 	mage.DisplayStats();
 	mage.DisplayInventory();
 	wand = mage.AddItemToInventory(std::move(wand));
-	sword = mage.AddItemToInventory(std::move(sword));
-	axe = mage.AddItemToInventory(std::move(axe));
+	helmet = mage.AddItemToInventory(std::move(helmet));
+	chest = mage.AddItemToInventory(std::move(chest));
+	boots = mage.AddItemToInventory(std::move(boots));
+	healthPotion = mage.AddItemToInventory(std::move(healthPotion));
 	mage.DisplayInventory();
-	mage2.DisplayInventory();
 
 	// Find item test
-	const Item* foundItem = mage.findItemByName("Sword");
+	const Item* foundItem = mage.findItemByName("Wand");
 	if (foundItem)
 	{
 		foundItem->displayInfo();
+	}
+	else {
+		std::cout << "Item not found." << std::endl;
 	}
 
 	// Remove item test

@@ -1,6 +1,6 @@
 #include "Inventory.h"
 #include <iostream>
-#include <memory>
+#include <algorithm>
 
 Inventory::Inventory(std::size_t maxSize) : maxSize(maxSize)
 {
