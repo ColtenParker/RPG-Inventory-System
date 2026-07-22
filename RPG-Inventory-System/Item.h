@@ -2,6 +2,8 @@
 #include <string>
 #include "ItemType.h"
 
+class Character;
+
 class Item
 {
 protected:
@@ -19,7 +21,9 @@ public:
 	int getValue() const;
 	int getWeight() const;
 
-	virtual void displayInfo() const;
+	virtual bool Use(Character& character);
+
+	virtual void displayInfo() const;	
 
 	virtual ~Item() = default;
 };

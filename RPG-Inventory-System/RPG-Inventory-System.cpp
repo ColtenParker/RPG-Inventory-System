@@ -20,7 +20,8 @@ int main()
 	std::unique_ptr<Item> boots = std::make_unique<Armor>("Boots", "A sturdy pair of boots", 30, 2, 2, "Plate", "Feet");
 
 	//Create Consumable items
-	std::unique_ptr<Item> healthPotion = std::make_unique<Consumable>("Health Potion", "Restores health", 25, 1, 50, "Health");
+	std::unique_ptr<Item> healthPotion = std::make_unique<Consumable>("Health Potion", "Restores health", 25, 1, 50, 0, "Health");
+	std::unique_ptr<Item> manaPotion = std::make_unique<Consumable>("Mana Potion", "Restores mana", 25, 1, 0, 30, "Mana");
 
 	// Create mage character
 	Mage mage("Gandalf");
@@ -50,6 +51,12 @@ int main()
 	mage.DisplayInventory();
 	axe = mage.AddItemToInventory(std::move(axe));
 	mage.DisplayInventory();
+
+	//Potion test
+	mage.TakeDamage(60);
+	mage.DisplayStats();
+	healthPotion->Use(mage);
+	mage.DisplayStats();
 
 	return 0;
 }

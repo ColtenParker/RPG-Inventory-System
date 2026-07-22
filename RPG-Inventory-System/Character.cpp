@@ -39,18 +39,18 @@ void Character::TakeDamage(int damage)
 
 }
 
-void Character::Heal(int amount)
+bool Character::Heal(int amount)
 {
 
 	if (currentHealth <= 0)
 	{
 		std::cout << name << " is dead and cannot be healed." << std::endl;
-		return;
+		return false;
 	}
 	else if (amount <= 0)
 	{
 		std::cout << "Heal amount must be more than 0." << std::endl;
-		return;
+		return false;
 	}
 
 	currentHealth += amount;
@@ -59,6 +59,7 @@ void Character::Heal(int amount)
 	{
 		currentHealth = maxHealth;
 	}
+	return true;
 }
 
 bool Character::IsAlive() const
@@ -71,9 +72,9 @@ std::unique_ptr<Item> Character::AddItemToInventory(std::unique_ptr<Item> item)
 	return inventory.addItem(std::move(item));
 }
 
-std::unique_ptr<Item> Character::RemoveItemFromInventory(std::size_t index)
+std::unique_ptr<Item> Character::RemoveItemFromInventory(std::unique_ptr<Item> item)
 {
-	return inventory.removeItem(index);
+	return inventory.removeItem(std::move(item));
 }
 
 void Character::DisplayInventory() const
@@ -84,4 +85,9 @@ void Character::DisplayInventory() const
 const Item* Character::findItemByName(const std::string& name) const
 {
 	return inventory.findItemByName(name);
+}
+
+void Character::useConsumable(const Item* item)
+{
+	
 }

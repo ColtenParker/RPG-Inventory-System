@@ -19,13 +19,14 @@ public:
 	virtual void DisplayStats() const;
 
 	void TakeDamage(int damage);
-	void Heal(int amount);
+	bool Heal(int amount);
 	bool IsAlive() const;
 
 	std::unique_ptr<Item> AddItemToInventory(std::unique_ptr<Item> item);
-	std::unique_ptr<Item> RemoveItemFromInventory(std::size_t index);
+	std::unique_ptr<Item> RemoveItemFromInventory(std::unique_ptr<Item> item);
 	void DisplayInventory() const;
 	const Item* findItemByName(const std::string& name) const;
+	void useConsumable(const Item* item);
 
 	virtual ~Character() = default;
 };

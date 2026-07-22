@@ -26,6 +26,11 @@ int Item::getWeight() const
 	return weight;
 }
 
+bool Item::Use(Character& character)
+{
+	return false;
+}
+
 void Item::displayInfo() const
 {
 	std::string temp;

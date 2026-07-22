@@ -13,6 +13,8 @@ public:
 	int getDamageBonus() const;
 	std::string getWeaponType() const;
 
+	// void useItem() override;
+
 	void displayInfo() const override;
 };
 
