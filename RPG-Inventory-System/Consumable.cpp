@@ -27,11 +27,7 @@ std::string Consumable::getConsumableType() const
 
 bool Consumable::Use(Character& character)
 {
-	if (!character.Heal(healthRestoreAmount))
-	{
-		return false;
-	}
-	return true;
+	return character.Heal(healthRestoreAmount);
 }
 
 void Consumable::displayInfo() const

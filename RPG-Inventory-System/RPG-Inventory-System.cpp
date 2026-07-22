@@ -55,8 +55,9 @@ int main()
 	//Potion test
 	mage.TakeDamage(60);
 	mage.DisplayStats();
-	healthPotion->Use(mage);
+	mage.useItem(3);
 	mage.DisplayStats();
+	mage.DisplayInventory();
 
 	return 0;
 }

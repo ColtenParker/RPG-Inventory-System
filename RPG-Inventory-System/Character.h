@@ -23,10 +23,10 @@ public:
 	bool IsAlive() const;
 
 	std::unique_ptr<Item> AddItemToInventory(std::unique_ptr<Item> item);
-	std::unique_ptr<Item> RemoveItemFromInventory(std::unique_ptr<Item> item);
+	std::unique_ptr<Item> RemoveItemFromInventory(std::size_t index);
 	void DisplayInventory() const;
 	const Item* findItemByName(const std::string& name) const;
-	void useConsumable(const Item* item);
+	void useItem(std::size_t index);
 
 	virtual ~Character() = default;
 };

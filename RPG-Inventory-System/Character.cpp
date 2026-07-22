@@ -52,6 +52,11 @@ bool Character::Heal(int amount)
 		std::cout << "Heal amount must be more than 0." << std::endl;
 		return false;
 	}
+	else if (currentHealth == maxHealth)
+	{
+		std::cout << name << " is already at full health." << std::endl;
+		return false;
+	}
 
 	currentHealth += amount;
 
@@ -72,9 +77,9 @@ std::unique_ptr<Item> Character::AddItemToInventory(std::unique_ptr<Item> item)
 	return inventory.addItem(std::move(item));
 }
 
-std::unique_ptr<Item> Character::RemoveItemFromInventory(std::unique_ptr<Item> item)
+std::unique_ptr<Item> Character::RemoveItemFromInventory(std::size_t index)
 {
-	return inventory.removeItem(std::move(item));
+	return inventory.removeItem(index);
 }
 
 void Character::DisplayInventory() const
@@ -87,7 +92,18 @@ const Item* Character::findItemByName(const std::string& name) const
 	return inventory.findItemByName(name);
 }
 
-void Character::useConsumable(const Item* item)
+void Character::useItem(std::size_t index)
 {
-	
+	std::unique_ptr<Item> item = inventory.removeItem(index);
+	if (item)
+	{
+		bool used = item->Use(*this);
+		if (!used)
+		{
+
+			inventory.addItem(std::move(item));
+		}
+	}
 }
+
+
