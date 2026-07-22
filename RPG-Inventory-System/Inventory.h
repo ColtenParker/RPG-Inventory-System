@@ -9,7 +9,7 @@ class Inventory
 	std::size_t maxSize;
 
 public:
-	Inventory(std::size_t maxSize = 2); //temporary default maxSize set to 2 for testing purposes
+	Inventory(std::size_t maxSize = 5); //temporary default maxSize set to 5 for testing purposes
 
 	std::size_t getMaxSize() const;
 
