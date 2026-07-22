@@ -95,15 +95,17 @@ const Item* Character::findItemByName(const std::string& name) const
 void Character::useItem(std::size_t index)
 {
 	std::unique_ptr<Item> item = inventory.removeItem(index);
-	if (item)
+	if (!item)
 	{
-		bool used = item->Use(*this);
-		if (!used)
-		{
-
-			inventory.addItem(std::move(item));
-		}
+		return;
 	}
+		
+	bool used = item->Use(*this);
+		
+	if (!used)
+	{
+		inventory.addItem(std::move(item));
+	}	
 }
 
 
